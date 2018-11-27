@@ -1,0 +1,99 @@
+.logo_brand{
+    float: left;
+    height: 50px;
+    padding: 6px 6px;
+
+}
+
+.logo{
+    width: 50px;
+    border-radius: 5px;
+}
+
+body{
+    background: #f3f3f3;
+}
+
+.main{
+    background: #fff;
+    width: 1000px;
+    margin: 0 auto;
+    overflow: hidden;
+    padding: 10px;
+}
+
+.page-title{
+    text-align: center;
+}
+
+.search-input{
+    width: 200px;
+    height: 24px;
+    border-radius: 2px;
+    border:1px solid black;
+    margin-left: 2px;
+}
+
+.search-button{
+    width: 60px;
+    height: 24px;
+    background-color: #337ab7;
+    color: white;
+    border-radius: 3px;
+    border: 0
+}
+
+.class-input{
+    width: 100px;
+    height: 24px;
+    border-radius: 2px;
+    border:1px solid black;
+    margin-left: 2px;
+}
+
+.table_list{
+    width: 400px;
+    border: 2px solid black;
+    border-collapse:collapse;
+    margin-left: 10px;
+    margin-top: 10px;
+    float: left;
+}
+
+.table_list caption{
+    text-align:center;
+    color: black;
+    font-size: large;
+}
+
+.table_list th{
+    font-size: medium;
+    text-align: center;
+    border: 1px solid black;
+    background: lightblue;
+    padding:5px 10px;
+}
+
+.table_list td{
+    font-size:1em;
+    text-align: center;
+    border:1px solid black;
+    padding:5px 10px;
+}
+
+.img_div{
+    margin-left: 30px;
+    margin-top: 50px;
+    float: left;
+}
+
+.img_ul{
+    padding:0;
+    margin-top:10px;
+}
+
+.img_ul li{
+    display:inline;
+    margin-top: 10px;
+    margin-left: 0;
+}
