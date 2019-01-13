@@ -12,16 +12,18 @@
             <input name="end_date" type="date" class="search-input" placeholder="请输入结束日期">
         <span>&nbsp;&nbsp;缺陷类型</span>
         <label><select name="class" class="class-input">
-            <option value="划痕">划痕</option>
-            <option value="污渍">污渍</option>
+            <option value="nothing">工件缺失</option>
+            <option value="lack_cotton">棉芯缺失</option>
+            <option value="lack_piece">金属片缺失</option>
+            <option value="wire_fail">金属丝异常</option>
         </select>
         <button type="submit" class="search-button">查询</button></label>
     </form>
     <ul class="img_ul">
     {% for log in logs %}
         <li >
-{#            <p>时间：{{ log.time|date:"Y-m-d H:i:s" }} &nbsp;&nbsp;缺陷类型：{{ log.detect_class }}</p>#}
-            <a href="{% static log.path %}" download="图片"><img  src="{% static log.path %}" alt="" width="400" height="300"></a>
+            <p >时间：{{ log.time|date:"Y-m-d H:i:s" }} &nbsp;&nbsp;缺陷类型：{{ log.detect_class }}</p>
+            <a href="{% static log.path %}" download="图片"><img  src="{% static log.path %}" alt="" width="360" height="300"></a>
         </li>
     {% endfor %}
     </ul>

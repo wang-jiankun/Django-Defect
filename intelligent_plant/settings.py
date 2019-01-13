@@ -139,4 +139,4 @@ USE_TZ = False
 
 # 静态文件查找路径
 STATIC_URL = '/static/'
-STATICFILES_DIRS = ['E:/1/']
+STATICFILES_DIRS = ['/']

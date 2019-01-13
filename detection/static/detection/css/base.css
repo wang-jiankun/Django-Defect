@@ -16,7 +16,7 @@ body{
 
 .main{
     background: #fff;
-    width: 1000px;
+    width: 800px;
     margin: 0 auto;
     overflow: hidden;
     padding: 10px;
@@ -89,11 +89,19 @@ body{
 
 .img_ul{
     padding:0;
-    margin-top:10px;
+    margin-top:0;
+    text-align:center;
+
 }
 
 .img_ul li{
     display:inline;
-    margin-top: 10px;
-    margin-left: 0;
+    /*margin-top: 10px;*/
+    margin-left: 10px;
+}
+.img_ul li p{
+    line-height:30px;
+    margin-top:10px;
+    margin-bottom:0;
+
 }
