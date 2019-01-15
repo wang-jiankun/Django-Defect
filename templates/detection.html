@@ -18,9 +18,9 @@
 {% block main %}
     <form action="{% url 'log_search' %}" method="get">
         <span>起始日期</span>
-            <input name="start_date" type="date" class="search-input" placeholder="请输入起始日期">
+            <input name="start_date" type="date" class="search-input" placeholder="请选择起始日期" value="2019-01-01">
         <span>&nbsp;&nbsp;终止日期</span>
-            <input name="end_date" type="date" class="search-input" placeholder="请输入结束日期">
+            <input name="end_date" type="date" class="search-input" placeholder="请选择结束日期" value="2019-02-01">
         <button type="submit" class="search-button">查询</button>
     </form>
     <table class="table_list">

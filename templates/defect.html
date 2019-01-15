@@ -1,15 +1,15 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}缺陷图片{% endblock %}
+{% block title %}不良图片{% endblock %}
 
 
 {% block main %}
     <form action="{% url 'defect_search' %}" method="get">
         <span>起始日期</span>
-            <input name="start_date" type="date" class="search-input" placeholder="请输入起始日期">
+            <input name="start_date" type="date" class="search-input" placeholder="请选择起始日期" value="2019-01-01">
         <span>&nbsp;&nbsp;终止日期</span>
-            <input name="end_date" type="date" class="search-input" placeholder="请输入结束日期">
+            <input name="end_date" type="date" class="search-input" placeholder="请选择结束日期" value="2019-02-01">
         <span>&nbsp;&nbsp;缺陷类型</span>
         <label><select name="class" class="class-input">
             <option value="nothing">工件缺失</option>
@@ -23,7 +23,7 @@
     {% for log in logs %}
         <li >
             <p >时间：{{ log.time|date:"Y-m-d H:i:s" }} &nbsp;&nbsp;缺陷类型：{{ log.detect_class }}</p>
-            <a href="{% static log.path %}" download="图片"><img  src="{% static log.path %}" alt="" width="360" height="300"></a>
+            <a href="{% static log.path %}" download="图片"><img  src="{% static log.path %}" alt="" width="360" height="270"></a>
         </li>
     {% endfor %}
     </ul>
