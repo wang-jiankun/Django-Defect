@@ -5,8 +5,23 @@
 
 {% block head %}
     <link rel="stylesheet" href="{% static 'detection/css/index.css' %}">
+
+    <script>
+        $(document).ready(function(){
+            setInterval(function() {$.get("{% url 'update' %}",function(data){
+                $("#one").html(data.num);
+                $("#two").html(data.num);});
+            }, 500);
+        });
+    </script>
+
 {% endblock %}
 
 {% block main %}
-    <h1 style="text-align: center">欢迎使用检测数据管理系统</h1>
+    <h1 style="text-align: center">欢迎使用检测数据查询系统</h1>
+    <ul>
+        <li>one: <span id='one'></span> </li>
+        <li>two: <span id='two'></span> </li>
+    </ul>
+
 {% endblock %}

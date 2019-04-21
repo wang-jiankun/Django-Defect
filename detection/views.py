@@ -6,8 +6,9 @@ from django.http import HttpResponse
 from django.views import View
 from .forms import RegisterForm, LoginForm, User
 from .decorators import login_required
-from .models import Log
+from .models import Log, Defect
 import datetime as dt
+import json
 
 # Create your views here.
 
@@ -21,6 +22,17 @@ def index(request):
     # log = Log(detect_class='划痕')
     # log.save()
     return render(request, 'index.html')
+
+
+def update(request):
+    """
+    更新数据
+    :param request:
+    :return:
+    """
+    data = Defect.objects.last()
+    data_json = {'num': data.path}
+    return HttpResponse(json.dumps(data_json), content_type='application/json')
 
 
 # 登录

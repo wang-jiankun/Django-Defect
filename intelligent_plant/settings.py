@@ -86,11 +86,11 @@ DATABASES = {
         # 数据库引擎，mysql、oracle等
         'ENGINE': 'django.db.backends.mysql',
         # 数据库的名字
-        'NAME': 'detection_data',
+        'NAME': 'detection',
         # 连接mysql数据库的用户名
         'USER': 'root',
         # 连接mysql数据库的密码
-        'PASSWORD': '1234',
+        'PASSWORD': '123456',
         # mysql数据库的主机地址
         'HOST': '127.0.0.1',
         # mysql数据库的端口号

@@ -1,5 +1,7 @@
 """
-ORM 模型模块
+数据查询系统：数据库 ORM 模块
+@Author  : JK Wang
+@Time    : 2019/4/20 17:02
 """
 from django.db import models
 import django.utils.timezone as timezone
@@ -42,3 +44,6 @@ class User(models.Model):
     username = models.CharField(max_length=100)
     password = models.CharField(max_length=100)
     email = models.EmailField(max_length=100, null=True)
+
+    class Meta:
+        db_table = 'user'
