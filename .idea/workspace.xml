@@ -2,23 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="118773d7-91cf-4fe5-8a29-ccfea18e48c5" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/detection/migrations/0002_auto_20190420_1731.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/intelligent_plant.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/intelligent_plant.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/detection/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/detection/migrations/0001_initial.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/detection/migrations/0002_auto_20181121_1703.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/detection/migrations/0003_auto_20181121_1717.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/detection/migrations/0004_user.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/detection/migrations/0005_log_path.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/detection/migrations/0006_auto_20181122_1450.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/detection/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/detection/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/detection/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/detection/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/detection/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/detection/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/intelligent_plant/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/intelligent_plant/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -107,8 +91,10 @@
     <session id="-1420843938">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
+          <entry key="project.closed" value="1" />
           <entry key="project.open.time.0" value="1" />
-          <entry key="project.opened" value="1" />
+          <entry key="project.open.time.24" value="1" />
+          <entry key="project.opened" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -116,7 +102,7 @@
           <entry key="css" value="1" />
           <entry key="html" value="13" />
           <entry key="js" value="4" />
-          <entry key="py" value="29" />
+          <entry key="py" value="35" />
           <entry key="ts" value="1" />
         </counts>
       </usages-collector>
@@ -125,7 +111,7 @@
           <entry key="CSS" value="1" />
           <entry key="HTML" value="13" />
           <entry key="JavaScript" value="4" />
-          <entry key="Python" value="29" />
+          <entry key="Python" value="35" />
           <entry key="TypeScript" value="1" />
         </counts>
       </usages-collector>
@@ -133,11 +119,13 @@
         <counts>
           <entry key="html" value="95" />
           <entry key="py" value="212" />
+          <entry key="txt" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="HTML" value="95" />
+          <entry key="PLAIN_TEXT" value="3" />
           <entry key="Python" value="212" />
         </counts>
       </usages-collector>
@@ -145,7 +133,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/intelligent_plant/settings.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="3384">
@@ -155,34 +143,22 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/index.html">
+        <entry file="file://$PROJECT_DIR$/detection/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="10" column="39" lean-forward="true" selection-start-line="10" selection-start-column="36" selection-end-line="10" selection-end-column="42" />
+            <state relative-caret-position="-1510">
+              <caret line="32" column="14" lean-forward="true" selection-start-line="32" selection-start-column="14" selection-end-line="32" selection-end-column="14" />
               <folding>
-                <element signature="e#212#238#0#HTML" expanded="true" />
+                <element signature="e#15#69#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/templates/detection.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="5" column="16" lean-forward="true" selection-start-line="5" selection-start-column="16" selection-end-line="5" selection-end-column="16" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/detection/views.py">
+        <entry file="file://$PROJECT_DIR$/detection/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="33" column="21" selection-start-line="33" selection-start-column="21" selection-end-line="33" selection-end-column="21" />
-              <folding>
-                <element signature="e#15#69#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="312">
+              <caret line="26" column="6" selection-start-line="26" selection-start-column="6" selection-end-line="26" selection-end-column="6" />
             </state>
           </provider>
         </entry>
@@ -246,7 +222,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -259,21 +234,11 @@
               <item name="intelligent_plant" type="462c0819:PsiDirectoryNode" />
               <item name="detection" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="intelligent_plant" type="b2602c69:ProjectViewProjectNode" />
-              <item name="intelligent_plant" type="462c0819:PsiDirectoryNode" />
-              <item name="detection" type="462c0819:PsiDirectoryNode" />
-              <item name="migrations" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="intelligent_plant" type="b2602c69:ProjectViewProjectNode" />
-              <item name="intelligent_plant" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -378,19 +343,26 @@
       <option name="project" value="LOCAL" />
       <updated>1547371713726</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="2019-4-21">
+      <created>1555857904737</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1555857904737</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="838" extended-state="7" />
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20135134" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20472974" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32997763" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49946353" weight="0.3514706" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49946353" weight="0.43823528" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -417,7 +389,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="2019-1-13" />
-    <option name="LAST_COMMIT_MESSAGE" value="2019-1-13" />
+    <MESSAGE value="2019-4-21" />
+    <option name="LAST_COMMIT_MESSAGE" value="2019-4-21" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://E:/Anaconda3/envs/django/Lib/site-packages/django/db/models/fields/__init__.py" />
@@ -466,9 +439,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/intelligent_plant/wsgi.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/intelligent_plant/__init__.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -480,19 +450,6 @@
       </provider>
     </entry>
     <entry file="file://D:/Anaconda3/envs/django/Lib/site-packages/django/contrib/admin/__init__.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/intelligent_plant/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="430">
-          <caret line="21" column="39" lean-forward="true" selection-start-line="21" selection-start-column="39" selection-end-line="21" selection-end-column="39" />
-          <folding>
-            <element signature="e#641#673#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/manage.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/detection/admin.py">
@@ -536,12 +493,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/detection/migrations/0004_user.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/detection/migrations/0002_auto_20181121_1703.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/detection/migrations/0004_user.py" />
+    <entry file="file://$PROJECT_DIR$/detection/migrations/0002_auto_20181121_1703.py" />
     <entry file="file://$PROJECT_DIR$/detection/migrations/__init__.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -552,13 +505,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/1.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-line="4" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/1.py" />
     <entry file="file://$PROJECT_DIR$/detection/migrations/0001_initial.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -566,13 +513,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="288">
           <caret line="24" column="92" lean-forward="true" selection-start-line="24" selection-start-column="70" selection-end-line="24" selection-end-column="92" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/detection/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="301">
-          <caret line="28" column="10" lean-forward="true" selection-start-line="28" selection-start-column="10" selection-end-line="28" selection-end-column="10" />
         </state>
       </provider>
     </entry>
@@ -604,10 +544,47 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/templates/detection.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="5" column="16" selection-start-line="5" selection-start-column="16" selection-end-line="5" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="10" column="39" selection-start-line="10" selection-start-column="36" selection-end-line="10" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/manage.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/intelligent_plant/wsgi.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/intelligent_plant/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="458">
+          <caret line="21" column="39" lean-forward="true" selection-start-line="21" selection-start-column="39" selection-end-line="21" selection-end-column="39" />
+          <folding>
+            <element signature="e#641#673#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/detection/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="312">
+          <caret line="26" column="6" selection-start-line="26" selection-start-column="6" selection-end-line="26" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/detection/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="33" column="21" selection-start-line="33" selection-start-column="21" selection-end-line="33" selection-end-column="21" />
+        <state relative-caret-position="-1510">
+          <caret line="32" column="14" lean-forward="true" selection-start-line="32" selection-start-column="14" selection-end-line="32" selection-end-column="14" />
           <folding>
             <element signature="e#15#69#0" expanded="true" />
           </folding>
@@ -618,23 +595,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3384">
           <caret line="141" column="24" selection-start-line="141" selection-start-column="24" selection-end-line="141" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="10" column="39" lean-forward="true" selection-start-line="10" selection-start-column="36" selection-end-line="10" selection-end-column="42" />
-          <folding>
-            <element signature="e#212#238#0#HTML" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/detection.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="5" column="16" lean-forward="true" selection-start-line="5" selection-start-column="16" selection-end-line="5" selection-end-column="16" />
         </state>
       </provider>
     </entry>
