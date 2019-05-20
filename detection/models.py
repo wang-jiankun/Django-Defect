@@ -24,17 +24,33 @@ class Log(models.Model):
         db_table = 'detection_log'
 
 
-class Defect(models.Model):
+class State(models.Model):
     """
     缺陷图片表单
     """
-    path = models.CharField(max_length=20)
+    run_state = models.CharField(max_length=10)
+    uph = models.IntegerField()
+    detection_num = models.IntegerField()
+    defect_num = models.IntegerField()
 
     def __str__(self):
-        return "<Defect:(id:%s)>" % self.path
+        return "<State: %s)>" % self.run_state
 
     class Meta:
-        db_table = 'defect_log'
+        db_table = 'running_state'
+
+
+class Chart(models.Model):
+    """
+    缺陷图片表单
+    """
+    step_1 = models.FloatField()
+    step_2 = models.FloatField()
+    step_3 = models.FloatField()
+    step_4 = models.FloatField()
+
+    class Meta:
+        db_table = 'chart_data'
 
 
 class User(models.Model):

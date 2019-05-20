@@ -9,19 +9,48 @@
     <script>
         $(document).ready(function(){
             setInterval(function() {$.get("{% url 'update' %}",function(data){
-                $("#one").html(data.num);
-                $("#two").html(data.num);});
-            }, 500);
+                $("#one").html(data.run_state);
+                $("#two").html(data.uph);});
+            }, 50000);
         });
     </script>
 
 {% endblock %}
 
 {% block main %}
-    <h1 style="text-align: center">欢迎使用检测数据查询系统</h1>
+    <h1 style="text-align: center">远程监控系统</h1>
     <ul>
         <li>one: <span id='one'></span> </li>
         <li>two: <span id='two'></span> </li>
     </ul>
+    <div style="width:500px;height:500px;" id="bar">
+        <canvas id="myChart"></canvas>
+    </div>
+
+    <script>
+        var ctx = document.getElementById("myChart").getContext("2d");
+        var myChart = new Chart(ctx, {
+            type: 'bar', // 曲线图-line; 柱形图-bar
+            data: {
+                labels : ["January","February","March","April","May","June","July"],
+                datasets : [
+                    {
+                        label: "123",  //当前数据的说明
+                        fill: true,  //是否要显示数据部分阴影面积块  false:不显示
+                        borderColor: "rgba(200,187,205,1)",//数据曲线颜色
+                        pointBackgroundColor: "#fff", //数据点的颜色
+                        data: [80, 90, 100, 30, 67, 59, 88],  //填充的数据
+                    },
+                    {
+                        label: "456",  //当前数据的说明
+                        fill: true,  //是否要显示数据部分阴影面积块  false:不显示
+                        borderColor: "rgba(75,192,192,1)",//数据曲线颜色
+                        pointBackgroundColor: "#fff", //数据点的颜色
+                        data: [21, 34, 35, 50, 45, 21, 70],  //填充的数据
+                    }
+                ]
+            }
+        });
+    </script>
 
 {% endblock %}

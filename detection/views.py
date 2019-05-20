@@ -4,9 +4,10 @@
 from django.shortcuts import render, redirect, reverse
 from django.http import HttpResponse
 from django.views import View
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage, InvalidPage
 from .forms import RegisterForm, LoginForm, User
 from .decorators import login_required
-from .models import Log, Defect
+from .models import Log, State
 import datetime as dt
 import json
 
@@ -21,7 +22,7 @@ def index(request):
     """
     # log = Log(detect_class='划痕')
     # log.save()
-    return render(request, 'index.html')
+    return render(request, 'index.html', context={'pos': 1})
 
 
 def update(request):
@@ -30,8 +31,9 @@ def update(request):
     :param request:
     :return:
     """
-    data = Defect.objects.last()
-    data_json = {'num': data.path}
+    data = State.objects.last()
+    data_json = {'run_state': data.run_state, 'uph': data.uph, 'detection_num': data.detection_num,
+                 'defect_num': data.defect_num}
     return HttpResponse(json.dumps(data_json), content_type='application/json')
 
 
@@ -148,6 +150,7 @@ def defect_view(request):
     # logs = Log.objects.filter(detect_class__in=['划痕', '污渍'])
     current_date = dt.date.today()
     logs = Log.objects.filter(time__startswith=current_date)
+
     return render(request, 'defect.html', context={"logs": logs, 'pos': 3})
 
 
@@ -164,5 +167,20 @@ def defect_search(request):
     if start_date == '' or end_date == '':
         logs = None
     else:
-        logs = Log.objects.filter(detect_class=defect_type, time__range=(start_date, end_date))
-    return render(request, 'defect.html', context={"logs": logs, 'pos': 3})
+        logs = Log.objects.filter(detect_class='normal', time__range=(start_date, end_date))
+
+    paginator = Paginator(logs, 1)
+
+    # 获取 url 后面的 page 参数的值, 首页不显示 page 参数, 默认值是 1
+    page = request.GET.get('page')
+    try:
+        defects = paginator.page(page)
+    except PageNotAnInteger:
+        # 如果请求的页数不是整数, 返回第一页。
+        defects = paginator.page(1)
+    except EmptyPage:
+        # 如果请求的页数不在合法的页数范围内，返回结果的最后一页。
+        defects = paginator.page(paginator.num_pages)
+
+    return render(request, 'defect.html', context={'logs': defects, 'pos': 3})
+    # return render(request, 'defect.html', context={"logs": logs, 'pos': 3})
