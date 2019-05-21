@@ -16,38 +16,44 @@
 {% endblock %}
 
 {% block main %}
-    <form action="{% url 'log_search' %}" method="get">
-        <span>起始日期</span>
-            <input name="start_date" type="date" class="search-input" placeholder="请选择起始日期" value="2019-01-01">
-        <span>&nbsp;&nbsp;终止日期</span>
-            <input name="end_date" type="date" class="search-input" placeholder="请选择结束日期" value="2019-02-01">
-        <button type="submit" class="search-button">查询</button>
-    </form>
-    <table class="table_list">
-        <caption>检测记录表</caption>
-        <thead>
-            <tr>
-                <th>序号</th>
-                <th>检测时间</th>
-                <th>检测结果</th>
-                <th>图片链接</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for log in logs %}
-                <tr>
-                    <td>{{ forloop.counter }}</td>
-                    <td style="text-align:left">{{ log.time|date:"Y-m-d H:i:s"  }}</td>
-                    <td>{{ log.detect_class }}</td>
-                    {% if log.path %}
-                        <td><button onclick="show('{{ log.path }}')">查看图片</button></td>
-                    {% else %}
-                        <td>无</td>
-                    {% endif %}
+    <div class="page">
+        <form action="{% url 'log_search' %}" method="get">
+            <span>起始日期</span>
+                <input name="start_date" type="date" class="search-input" placeholder="请选择起始日期" value={{ ks.s }}>
+            <span>&nbsp;&nbsp;终止日期</span>
+                <input name="end_date" type="date" class="search-input" placeholder="请选择结束日期" value={{ ks.e }}>
+            <button type="submit" class="search-button">查询</button>
+        </form>
+    </div>
 
+    <div class="table_div">
+        <table rules="rows" class="table_list">
+            {#<caption>检测记录表</caption>#}
+            <thead>
+                <tr>
+                    <th width="15%">序号</th>
+                    <th width="35%">检测时间</th>
+                    <th width="25%">检测结果</th>
+                    <th width="25%">图片链接</th>
                 </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                {% for log in logs %}
+                    <tr>
+                        <td width="15%">{{ forloop.counter }}</td>
+                        <td width="35%" style="text-align:left">{{ log.time|date:"Y-m-d H:i:s"  }}</td>
+                        <td width="25%">{{ log.detect_class }}</td>
+                        {% if log.path %}
+                            <td width="25%"><button onclick="show('{{ log.path }}')">查看图片</button></td>
+                        {% else %}
+                            <td width="25%">无</td>
+                        {% endif %}
+
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
     <div id="box" class="img_div"></div>
+
 {% endblock %}

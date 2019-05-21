@@ -3,68 +3,106 @@
 
 {% block title %}不良图片{% endblock %}
 
+{% block head %}
+    <script>
+        function getKeys(){
+            var start = document.getElementsByName("start_date")[0].value;
+            var end = document.getElementsByName("end_date")[0].value;
+            var c = document.getElementsByName("class")[0].value;
+
+            return '&start_date='+ start + '&end_date=' + end + '&class=' + c;
+        }
+    </script>
+{% endblock %}
+
+
 
 {% block main %}
-    <form action="{% url 'defect_search' %}" method="get">
-        <span>起始日期</span>
-            <input name="start_date" type="date" class="search-input" placeholder="请选择起始日期" value="2019-01-01">
-        <span>&nbsp;&nbsp;终止日期</span>
-            <input name="end_date" type="date" class="search-input" placeholder="请选择结束日期" value="2019-02-01">
-        <span>&nbsp;&nbsp;缺陷类型</span>
-        <label><select name="class" class="class-input">
-            <option value="nothing">工件缺失</option>
-            <option value="lack_cotton">棉芯缺失</option>
-            <option value="lack_piece">金属片缺失</option>
-            <option value="wire_fail">金属丝异常</option>
-        </select>
-        <button type="submit" class="search-button">查询</button></label>
-    </form>
-    <ul class="img_ul">
-    {% for log in logs %}
-        <li >
-            <p >时间：{{ log.time|date:"Y-m-d H:i:s" }} &nbsp;&nbsp;缺陷类型：{{ log.detect_class }}</p>
-            <a href="{% static log.path %}" download="图片"><img  src="{% static log.path %}" alt="" width="360" height="270"></a>
-        </li>
-    {% endfor %}
-    </ul>
+    <div class="page">
+        <form action="{% url 'defect_search' %}" method="get">
+            <span>起始日期</span>
+                <input name="start_date" type="date" class="search-input" placeholder="请选择起始日期" value={{ ks.s }}>
+            <span>&nbsp;&nbsp;终止日期</span>
+                <input name="end_date" type="date" class="search-input" placeholder="请选择结束日期" value={{ ks.e }}>
+            <span>&nbsp;&nbsp;缺陷类型</span>
+            <label><select name="class" class="class-input">
+                <option value="normal">正常</option>
+                <option value="nothing">工件缺失</option>
+                <option value="lack_cotton">棉芯缺失</option>
+                <option value="lack_piece">金属片缺失</option>
+                <option value="wire_fail">金属丝异常</option>
+                <script>
+                    var select = document.getElementsByName('class')[0];
+                    for (var i = 0; i < select.options.length; i++){
+                        if (select.options[i].value == '{{ ks.c }}'){
+                            select.options[i].selected = true;
+                            break;
+                        }
+                    }
+                </script>
+            </select>
+            <button type="submit" class="search-button">查询</button></label>
+        </form>
+    </div>
 
-    <ul class="pagination">
-        {# 如果当前页还有上一页 #}
-        {% if logs.has_previous %}
-            <li>
-                {# 点击a标签，跳转到上一页链接 ?index  为地址后面拼接的参数 #}
-                <a href="?index={{logs.previous_page_number}}">上一页</a>
+    <div class="page">
+        <ul class="img_ul">
+        {% for log in logs %}
+            <li >
+                <a href="{% static log.path %}" download="图片"><img  src="{% static log.path %}" alt="" width="240" height="180"></a>
+                <p >时间:{{ log.time|date:"Y-m-d H:i:s" }} &nbsp;&nbsp;类型:{{ log.detect_class }}</p>
             </li>
-        {% else %}
-            {# 如果没有上一页， 则上一页按钮不可点击 #}
-            <li class="disabled">
-                <a href="#">上一页</a>
-            </li>
-        {% endif %}
+        {% endfor %}
+        </ul>
+    </div>
 
-        {% for page_number in logs.paginator.page_range %}
-            {# 获取当前页的页码 #}
-            {% if page_number == logs.number %}
-                {# 如果是当前页的话，选中 #}
-                <li class="active">
-                    <a href="?index={{page_number}}">{{page_number}}</a>
+    <div class="page">
+        <ul class="pagination page_ul">
+            {# 如果当前页还有上一页 #}
+            {% if logs.has_previous %}
+                <li>
+                    <script>
+                        {# 点击a标签，跳转到上一页链接 ?index 为地址后面拼接的参数 #}
+                        document.write('<a href=?p={{logs.previous_page_number}}' + getKeys() + '>上一页</a>');
+                    </script>
                 </li>
             {% else %}
-                <li>
-                    <a href="?index={{page_number}}">{{page_number}}</a>
+                {# 如果没有上一页， 则上一页按钮不可点击 #}
+                <li class="disabled">
+                    <a href="#">上一页</a>
                 </li>
             {% endif %}
-        {% endfor %}
 
-        {% if logs.has_next %}
-            <li>
-                <a href="?index={{logs.next_page_number}}">下一页</a>
+            {% for page_number in logs.paginator.page_range %}
+                {# 获取当前页的页码 #}
+                {% if page_number == logs.number %}
+                    {# 如果是当前页的话，选中 #}
+                    <li class="active">
+                        <script>
+                            document.write('<a href=?p={{page_number}}' + getKeys() + '>{{page_number}}</a>');
+                        </script>
+                    </li>
+                {% else %}
+                    <li>
+                        <script>
+                            document.write('<a href=?p={{page_number}}' + getKeys() + '>{{page_number}}</a>');
+                        </script>
+                    </li>
+                {% endif %}
+            {% endfor %}
+
+            {% if logs.has_next %}
+                <li>
+                    <script>
+                        document.write('<a href=?p={{logs.next_page_number}}' + getKeys() + '>下一页</a>');
+                    </script>
+                </li>
+            {% else %}
+            <li class="disabled">
+                <a href="#">下一页</a>
             </li>
-        {% else %}
-        <li class="disabled">
-            <a href="#">下一页</a>
-        </li>
-        {% endif %}
-    </ul>
+            {% endif %}
+        </ul>
+    </div>
 
 {% endblock %}

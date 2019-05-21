@@ -120,8 +120,10 @@ def detection_view(request):
     :param request:
     :return:
     """
-    logs = Log.objects.all()
-    return render(request, 'detection.html', context={"logs": logs, 'pos': 2})
+    current_date = dt.date.today()
+    logs = Log.objects.filter(time__endswith=current_date)
+    keys = {'s': '2019-01-01', 'e': str(current_date)}
+    return render(request, 'detection.html', context={"logs": logs, 'pos': 2, 'ks': keys})
 
 
 @login_required
@@ -133,11 +135,9 @@ def log_search(request):
     """
     start_date = request.GET.get('start_date')
     end_date = request.GET.get('end_date')
-    if start_date == '' or end_date == '':
-        logs = Log.objects.all()
-    else:
-        logs = Log.objects.filter(time__range=(start_date, end_date))
-    return render(request, 'detection.html', context={"logs": logs, 'pos': 2})
+    keys = {'s': start_date, 'e': end_date}
+    logs = Log.objects.filter(time__range=(start_date, end_date))
+    return render(request, 'detection.html', context={"logs": logs, 'pos': 2, 'ks': keys})
 
 
 @login_required
@@ -147,11 +147,11 @@ def defect_view(request):
     :param request:
     :return:
     """
-    # logs = Log.objects.filter(detect_class__in=['划痕', '污渍'])
     current_date = dt.date.today()
-    logs = Log.objects.filter(time__startswith=current_date)
+    logs = Log.objects.filter(time__endswith=current_date)
+    keys = {'s': '2019-01-01', 'e': str(current_date), 'c': 'normal'}
 
-    return render(request, 'defect.html', context={"logs": logs, 'pos': 3})
+    return render(request, 'defect.html', context={"logs": logs, 'pos': 3, 'ks': keys})
 
 
 @login_required
@@ -164,15 +164,13 @@ def defect_search(request):
     defect_type = request.GET.get('class')
     start_date = request.GET.get('start_date')
     end_date = request.GET.get('end_date')
-    if start_date == '' or end_date == '':
-        logs = None
-    else:
-        logs = Log.objects.filter(detect_class='normal', time__range=(start_date, end_date))
+    keys = {'s': start_date, 'e': end_date, 'c': defect_type}
+    logs = Log.objects.filter(detect_class=defect_type, time__range=(start_date, end_date))
 
-    paginator = Paginator(logs, 1)
+    paginator = Paginator(logs, 3)
 
     # 获取 url 后面的 page 参数的值, 首页不显示 page 参数, 默认值是 1
-    page = request.GET.get('page')
+    page = request.GET.get('p')
     try:
         defects = paginator.page(page)
     except PageNotAnInteger:
@@ -182,5 +180,5 @@ def defect_search(request):
         # 如果请求的页数不在合法的页数范围内，返回结果的最后一页。
         defects = paginator.page(paginator.num_pages)
 
-    return render(request, 'defect.html', context={'logs': defects, 'pos': 3})
+    return render(request, 'defect.html', context={'logs': defects, 'pos': 3, 'ks': keys})
     # return render(request, 'defect.html', context={"logs": logs, 'pos': 3})
