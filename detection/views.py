@@ -5,9 +5,10 @@ from django.shortcuts import render, redirect, reverse
 from django.http import HttpResponse
 from django.views import View
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage, InvalidPage
+from django.forms.models import model_to_dict
 from .forms import RegisterForm, LoginForm, User
 from .decorators import login_required
-from .models import Log, State
+from .models import Log, State, Chart
 import datetime as dt
 import json
 
@@ -31,9 +32,11 @@ def update(request):
     :param request:
     :return:
     """
-    data = State.objects.last()
-    data_json = {'run_state': data.run_state, 'uph': data.uph, 'detection_num': data.detection_num,
-                 'defect_num': data.defect_num}
+    current_date = dt.date.today()
+    current_time = dt.datetime.now().strftime("%H:%M:%S")
+    state = model_to_dict(State.objects.last())
+    step_time = model_to_dict(Chart.objects.last())
+    data_json = {'date': str(current_date), 'time': current_time, 'state': state, 'step_time': step_time}
     return HttpResponse(json.dumps(data_json), content_type='application/json')
 
 

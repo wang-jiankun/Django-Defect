@@ -8,7 +8,7 @@
     function show(img_path){
         var img=document.getElementById("box");
         {#img.innerHTML=''+img_path+'';#}
-        img.innerHTML='<img src="/static/'+img_path+'" width="320" height="240">';   //添加图片
+        img.innerHTML='<img src="/static/'+img_path+'" width="256" height="192">';   //添加图片
     }
     </script>
     <link rel="stylesheet" href="{% static 'detection/css/base.css' %}">
@@ -31,8 +31,8 @@
             {#<caption>检测记录表</caption>#}
             <thead>
                 <tr>
-                    <th width="15%">序号</th>
-                    <th width="35%">检测时间</th>
+                    <th width="13%">序号</th>
+                    <th width="37%">检测时间</th>
                     <th width="25%">检测结果</th>
                     <th width="25%">图片链接</th>
                 </tr>
@@ -40,8 +40,8 @@
             <tbody>
                 {% for log in logs %}
                     <tr>
-                        <td width="15%">{{ forloop.counter }}</td>
-                        <td width="35%" style="text-align:left">{{ log.time|date:"Y-m-d H:i:s"  }}</td>
+                        <td width="13%">{{ forloop.counter }}</td>
+                        <td width="37%" style="text-align:center">{{ log.time|date:"Y-m-d H:i:s"  }}</td>
                         <td width="25%">{{ log.detect_class }}</td>
                         {% if log.path %}
                             <td width="25%"><button onclick="show('{{ log.path }}')">查看图片</button></td>
@@ -54,6 +54,6 @@
             </tbody>
         </table>
     </div>
-    <div id="box" class="img_div"></div>
+    <div id="box" class="img_div">图形显示区域</div>
 
 {% endblock %}

@@ -51,8 +51,15 @@ body{
     margin-left: 2px;
 }
 
+.table_div {
+    width: 440px;
+    margin-top: 20px;
+    margin-left: 20px;
+
+}
+
 .table_list{
-    width: 480px;
+    width: 440px;
     border: 1px solid black;
     /*border-collapse:collapse;*/
     margin: 0;
@@ -65,14 +72,9 @@ body{
     font-size: large;
 }
 
-.table_div {
-    width: 480px;
-    margin-top: 20px;
-}
-
 .table_list tbody {
     display: block;
-    height: 100px;
+    height: 180px;
     overflow-y: scroll;
     border-color: gray;
 
@@ -93,20 +95,26 @@ body{
     text-align: center;
     /*border: 1px solid black;*/
     background: lightblue;
-    padding:5px 10px;
+    padding:5px 0;
 }
 
 .table_list td{
     font-size:1em;
     text-align: center;
     /*border:1px solid black;*/
-    padding:5px 10px;
+    padding:5px 0;
 }
 
 .img_div{
-    margin-left: 30px;
-    margin-top: 50px;
+    margin-left: 20px;
+    margin-top: 0;
     float: left;
+    border: 1px solid black;
+    width: 258px;
+    height: 215px;
+    display: flex;
+    align-items: center;
+    text-align: center;
 }
 
 .img_ul{
@@ -138,6 +146,58 @@ body{
 
 .page_ul {
     margin: 0;
+}
+
+.info_div {
+    /*width: 250px;*/
+    float: left;
+}
+
+.info {
+    list-style:none;
+    padding:20px;
+    width: 250px;
+}
+
+.info li {
+    line-height:40px;
+    font-size:20px;
+}
+
+.item {
+    border: solid 1px lightgray;
+    background: #3385ff;
+    padding: 2px;
+    display: inline-block;
+    width: 80px;
+    margin:0 0 -1px -1px;
+    text-align: center;
+
+}
+
+.data {
+    border: solid 1px lightgray;
+    background: white;
+    padding: 2px;
+    display: inline-block;
+    width: 120px;
+    margin:0 0 -1px -1px;
+    text-align: center;
+}
+
+.chart {
+    width: 480px;
+    float: left;
+    padding-top: 10px;
+}
+
+.title {
+    border-bottom: 2px solid darkblue;
+    padding: 0;
+}
+
+.title p {
+    font-size: 30px;
 }
 
 

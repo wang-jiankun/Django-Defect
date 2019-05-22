@@ -8,47 +8,117 @@
 
     <script>
         $(document).ready(function(){
-            setInterval(function() {$.get("{% url 'update' %}",function(data){
-                $("#one").html(data.run_state);
-                $("#two").html(data.uph);});
-            }, 50000);
+            setInterval(function() {$.get("{% url 'update' %}",
+                function(data){
+                    $("#time").html(data.time);
+                    $("#state").html(data.state.run_state);
+                    $("#uph").html(data.state.uph);
+                    $("#sum").html(data.state.detection_num);
+                    $("#defect").html(data.state.defect_num);
+                    step_time[0] = data.step_time.step_1;
+                    for (var i=0;i<4;i++){
+                        k = 'step_' + (i+1);
+                        step_time[i] = data.step_time[k];
+                    }
+                    myChart.update();
+                });
+            }, 800);
         });
     </script>
 
 {% endblock %}
 
 {% block main %}
-    <h2 style="text-align: center">远程监控系统</h2>
-    <ul>
-        <li>one: <span id='one'></span> </li>
-        <li>two: <span id='two'></span> </li>
-    </ul>
-    <div style="width:500px;height:500px;" id="bar">
+    <div class="title">
+        <p style="text-align: center">远程监控系统</p>
+    </div>
+
+
+    <div class="info_div">
+        <ul class="info">
+            <li> <span class="item">时间: </span><span class="data" id='time'>NONE</span> </li>
+            <li> <span class="item">状态: </span><span class="data" id='state'>NONE</span> </li>
+            <li> <span class="item">UPH: </span><span class="data" id='uph'>NONE</span> </li>
+            <li> <span class="item">总数量: </span><span class="data" id='sum'>NONE</span> </li>
+            <li> <span class="item">不合格: </span><span class="data" id='defect'>NONE</span> </li>
+        </ul>
+    </div>
+
+    <div class="chart" id="bar">
         <canvas id="myChart"></canvas>
     </div>
 
     <script>
+        var step_time = [0.0, 0.0, 0.0, 0.0];
+        var avg_time = [2.1, 2.7, 1.8, 3.2];
         var ctx = document.getElementById("myChart").getContext("2d");
         var myChart = new Chart(ctx, {
             type: 'bar', // 曲线图-line; 柱形图-bar
             data: {
-                labels : ["January","February","March","April","May","June","July"],
+                labels : ["工序1","工序2","工序3","工序4"],
                 datasets : [
                     {
-                        label: "123",  //当前数据的说明
-                        fill: true,  //是否要显示数据部分阴影面积块  false:不显示
-                        borderColor: "rgba(200,187,205,1)",//数据曲线颜色
-                        pointBackgroundColor: "#fff", //数据点的颜色
-                        data: [80, 90, 100, 30, 67, 59, 88],  //填充的数据
+                        label: "平均",  //当前数据的说明
+                        {#fillColor: "#CCCCFF",#}
+                        {#strokeColor: "rgba(220,220,220,1)",#}
+                        {#highlightFill: "rgba(220,220,220,0.75)",#}
+                        {#highlightStroke: "rgba(220,220,220,1)",#}
+                        backgroundColor: "blue",
+                        data: avg_time,  //填充的数据
                     },
                     {
-                        label: "456",  //当前数据的说明
-                        fill: true,  //是否要显示数据部分阴影面积块  false:不显示
-                        borderColor: "rgba(75,192,192,1)",//数据曲线颜色
-                        pointBackgroundColor: "#fff", //数据点的颜色
-                        data: [21, 34, 35, 50, 45, 21, 70],  //填充的数据
+                        label: "实时",  //当前数据的说明
+                        backgroundColor: "green",
+                        data: step_time,  //填充的数据
                     }
                 ]
+            },
+
+            options: {
+                title: {
+                    display: true,
+                    text: '雾化器生产线各工序用时',
+                    fontSize:18,
+                    fontColor: "#000",
+                },
+                legend: {
+                    position: 'bottom',
+                },
+
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                },
+                tooltips: {//工具提示
+                    enabled: false,
+                },
+                animation: {           // 这部分是数值显示的功能实现
+                    duration: 1,
+                    onComplete: function () {
+                        var chartInstance = this.chart;
+
+                        ctx = chartInstance.ctx;
+                        // 以下属于canvas的属性（font、fillStyle、textAlign...）
+                        ctx.font = Chart.helpers.fontString(Chart.defaults.global.defaultFontSize, Chart.defaults.global.defaultFontStyle, Chart.defaults.global.defaultFontFamily);
+                        ctx.fillStyle = "black";
+                        ctx.textAlign = 'center';
+                        ctx.textBaseline = 'bottom';
+
+                        this.data.datasets.forEach(function (dataset, i) {
+                            var meta = chartInstance.controller.getDatasetMeta(i);
+                            meta.data.forEach(function (bar, index) {
+                                var data = dataset.data[index];
+                                ctx.fillText(data, bar._model.x, bar._model.y - 2);
+                            });
+                        });
+                    }
+                }
+
+
+
             }
         });
     </script>
