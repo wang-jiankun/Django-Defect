@@ -18,14 +18,14 @@
 
 
 {% block main %}
-    <div class="page">
+    <div class="search-div">
         <form action="{% url 'defect_search' %}" method="get">
             <span>起始日期</span>
                 <input name="start_date" type="date" class="search-input" placeholder="请选择起始日期" value={{ ks.s }}>
             <span>&nbsp;&nbsp;终止日期</span>
                 <input name="end_date" type="date" class="search-input" placeholder="请选择结束日期" value={{ ks.e }}>
             <span>&nbsp;&nbsp;缺陷类型</span>
-            <label><select name="class" class="class-input">
+            <label class="lab"><select name="class" class="class-input">
                 <option value="normal">正常</option>
                 <option value="nothing">工件缺失</option>
                 <option value="lack_cotton">棉芯缺失</option>

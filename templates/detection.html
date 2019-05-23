@@ -16,7 +16,7 @@
 {% endblock %}
 
 {% block main %}
-    <div class="page">
+    <div class="search-div">
         <form action="{% url 'log_search' %}" method="get">
             <span>起始日期</span>
                 <input name="start_date" type="date" class="search-input" placeholder="请选择起始日期" value={{ ks.s }}>

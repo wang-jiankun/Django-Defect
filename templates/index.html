@@ -10,6 +10,7 @@
         $(document).ready(function(){
             setInterval(function() {$.get("{% url 'update' %}",
                 function(data){
+                    $("#date").html(data.date);
                     $("#time").html(data.time);
                     $("#state").html(data.state.run_state);
                     $("#uph").html(data.state.uph);
@@ -36,6 +37,7 @@
 
     <div class="info_div">
         <ul class="info">
+            <li> <span class="item">日期: </span><span class="data" id='date'>NONE</span> </li>
             <li> <span class="item">时间: </span><span class="data" id='time'>NONE</span> </li>
             <li> <span class="item">状态: </span><span class="data" id='state'>NONE</span> </li>
             <li> <span class="item">UPH: </span><span class="data" id='uph'>NONE</span> </li>
@@ -45,7 +47,7 @@
     </div>
 
     <div class="chart" id="bar">
-        <canvas id="myChart"></canvas>
+        <canvas id="myChart" height="180px"></canvas>
     </div>
 
     <script>
@@ -77,7 +79,7 @@
             options: {
                 title: {
                     display: true,
-                    text: '雾化器生产线各工序用时',
+                    text: '雾化器生产线各工序用时(s)',
                     fontSize:18,
                     fontColor: "#000",
                 },

@@ -10,6 +10,11 @@
     border-radius: 5px;
 }
 
+.nav-custom{
+    /*border-color: darkblue;*/
+    margin-bottom: 5px;
+}
+
 body{
     background: #f3f3f3;
 }
@@ -137,6 +142,17 @@ body{
     line-height:30px;
     font-size:12px;
     margin-bottom:0;
+}
+
+.search-div {
+    clear:both;
+    text-align: center;
+    border-bottom: 2px solid darkblue;
+    padding-bottom: 6px;
+}
+
+.lab {
+    margin-bottom: 0;
 }
 
 .page {
