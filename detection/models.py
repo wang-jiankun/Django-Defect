@@ -15,7 +15,7 @@ class Log(models.Model):
     """
     time = models.DateTimeField(auto_now_add=True)
     detect_class = models.CharField(max_length=10)
-    path = models.CharField(max_length=30, null=True)
+    path = models.CharField(max_length=60, null=True)
 
     def __str__(self):
         return "<Log:(id:%s,class:%s)>" % (self.id, self.time)
