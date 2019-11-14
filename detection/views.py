@@ -35,8 +35,10 @@ def update(request):
     current_date = dt.date.today()
     current_time = dt.datetime.now().strftime("%H:%M:%S")
     state = model_to_dict(State.objects.last())
-    step_time = model_to_dict(Chart.objects.last())
-    data_json = {'date': str(current_date), 'time': current_time, 'state': state, 'step_time': step_time}
+    step_time = model_to_dict(Chart.objects.first())
+    avg_step_time = model_to_dict(Chart.objects.last())
+    data_json = {'date': str(current_date), 'time': current_time,
+                 'state': state, 'step_time': step_time, 'avg_time': avg_step_time}
     return HttpResponse(json.dumps(data_json), content_type='application/json')
 
 
@@ -124,7 +126,7 @@ def detection_view(request):
     :return:
     """
     current_date = dt.date.today()
-    logs = Log.objects.filter(time__endswith=current_date)
+    logs = Log.objects.filter(time__contains=current_date)
     keys = {'s': '2019-01-01', 'e': str(current_date)}
     return render(request, 'detection.html', context={"logs": logs, 'pos': 2, 'ks': keys})
 
@@ -138,8 +140,9 @@ def log_search(request):
     """
     start_date = request.GET.get('start_date')
     end_date = request.GET.get('end_date')
+    end_date_p = end_date[0:-2]+str(int(end_date[-2:])+1)
     keys = {'s': start_date, 'e': end_date}
-    logs = Log.objects.filter(time__range=(start_date, end_date))
+    logs = Log.objects.filter(time__range=(start_date, end_date_p))
     return render(request, 'detection.html', context={"logs": logs, 'pos': 2, 'ks': keys})
 
 
@@ -151,10 +154,10 @@ def defect_view(request):
     :return:
     """
     current_date = dt.date.today()
-    logs = Log.objects.filter(time__endswith=current_date)
+    # logs = Log.objects.filter(time__contains=current_date)
     keys = {'s': '2019-01-01', 'e': str(current_date), 'c': 'normal'}
 
-    return render(request, 'defect.html', context={"logs": logs, 'pos': 3, 'ks': keys})
+    return render(request, 'defect.html', context={"logs": [], 'pos': 3, 'ks': keys})
 
 
 @login_required
@@ -167,8 +170,10 @@ def defect_search(request):
     defect_type = request.GET.get('class')
     start_date = request.GET.get('start_date')
     end_date = request.GET.get('end_date')
+    end_date_p = end_date[0:-2]+str(int(end_date[-2:])+1)
     keys = {'s': start_date, 'e': end_date, 'c': defect_type}
-    logs = Log.objects.filter(detect_class=defect_type, time__range=(start_date, end_date))
+    logs = Log.objects.filter(detect_class=defect_type, time__lte=end_date_p)
+    # logs = Log.objects.filter(detect_class=defect_type, time__range=(start_date, end_date))
 
     paginator = Paginator(logs, 3)
 

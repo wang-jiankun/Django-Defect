@@ -14,8 +14,8 @@ class Log(models.Model):
     检测记录表单
     """
     time = models.DateTimeField(auto_now_add=True)
-    detect_class = models.CharField(max_length=10)
-    path = models.CharField(max_length=60, null=True)
+    detect_class = models.CharField(max_length=20)
+    path = models.CharField(max_length=100, null=True)
 
     def __str__(self):
         return "<Log:(id:%s,class:%s)>" % (self.id, self.time)

@@ -20,6 +20,7 @@
                     for (var i=0;i<4;i++){
                         k = 'step_' + (i+1);
                         step_time[i] = data.step_time[k];
+                        avg_time[i] = data.avg_time[k];
                     }
                     myChart.update();
                 });
@@ -31,7 +32,7 @@
 
 {% block main %}
     <div class="title">
-        <p style="text-align: center">远程监控系统</p>
+        <p style="text-align: center">雾化器生产线远程监控系统</p>
     </div>
 
 
@@ -52,7 +53,7 @@
 
     <script>
         var step_time = [0.0, 0.0, 0.0, 0.0];
-        var avg_time = [2.1, 2.7, 1.8, 3.2];
+        var avg_time = [0.0, 0.0, 0.0, 0.0];
         var ctx = document.getElementById("myChart").getContext("2d");
         var myChart = new Chart(ctx, {
             type: 'bar', // 曲线图-line; 柱形图-bar

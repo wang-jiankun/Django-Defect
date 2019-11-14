@@ -26,7 +26,7 @@ SECRET_KEY = 'ncki&67^r7^30zk3v#a3#y0d^guji2)u^))&4uizbmc$byfv0_'
 DEBUG = True
 
 # 设置允许的IP访问
-ALLOWED_HOSTS = ['127.0.0.1', '172.16.6.208']
+ALLOWED_HOSTS = ['127.0.0.1', '192.168.0.108']
 
 
 # Application definition
